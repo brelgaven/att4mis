@@ -32,3 +32,5 @@ epoch:28 - loss_tr: 0.0321775803 loss_val: 0.0598309150 - dice_tr: 0.5283149643 
 epoch:29 - loss_tr: 0.0314298207 loss_val: 0.0581037772 - dice_tr: 0.5209658429 dice_val: 0.7702872214 - Last Saved
 epoch:30 - loss_tr: 0.0304893867 loss_val: 0.0583859132 - dice_tr: 0.5355846899 dice_val: 0.7752403781
 epoch:31 - loss_tr: 0.0292050463 loss_val: 0.0598681766 - dice_tr: 0.5285618951 dice_val: 0.7685964938
+epoch:32 - loss_tr: 0.0279523316 loss_val: 0.0566030361 - dice_tr: 0.5597789670 dice_val: 0.7632384578 - Last Saved
+epoch:33 - loss_tr: 0.0263368102 loss_val: 0.0568971293 - dice_tr: 0.5805584336 dice_val: 0.7771950231
