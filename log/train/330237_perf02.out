@@ -1,0 +1,202 @@
+/itet-stor/gtombak/net_scratch/conda_envs/pytcu10/lib/python3.8/site-packages/torchvision/transforms/functional.py:132: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  /opt/conda/conda-bld/pytorch_1616554786078/work/torch/csrc/utils/tensor_numpy.cpp:143.)
+  img = torch.from_numpy(np.array(pic, np.float32, copy=False))
+epoch:0 - loss_tr: 1.5332252506 loss_val: 0.8168370008 - dice_tr: 0.1615293736 dice_val: 0.6202002506 - Last Saved
+epoch:1 - loss_tr: 0.5453879585 loss_val: 0.3499463163 - dice_tr: 0.2079778379 dice_val: 0.6704731891 - Last Saved
+epoch:2 - loss_tr: 0.2685411707 loss_val: 0.2066478189 - dice_tr: 0.2466938944 dice_val: 0.6950959544 - Last Saved
+epoch:3 - loss_tr: 0.1775205591 loss_val: 0.1591051864 - dice_tr: 0.2566067763 dice_val: 0.6719615340 - Last Saved
+epoch:4 - loss_tr: 0.1384139307 loss_val: 0.1266778973 - dice_tr: 0.2627807665 dice_val: 0.6870319346 - Last Saved
+epoch:5 - loss_tr: 0.1163619732 loss_val: 0.1086444139 - dice_tr: 0.2651955772 dice_val: 0.7077736932 - Last Saved
+epoch:6 - loss_tr: 0.1035342116 loss_val: 0.1054063400 - dice_tr: 0.2678146932 dice_val: 0.6955233888 - Last Saved
+epoch:7 - loss_tr: 0.0941698208 loss_val: 0.0924926027 - dice_tr: 0.2640234902 dice_val: 0.7010288694 - Last Saved
+epoch:8 - loss_tr: 0.0878672145 loss_val: 0.0882869944 - dice_tr: 0.2699960699 dice_val: 0.7038686727 - Last Saved
+epoch:9 - loss_tr: 0.0821312905 loss_val: 0.0825345170 - dice_tr: 0.2747051200 dice_val: 0.7028947326 - Last Saved
+epoch:10 - loss_tr: 0.0755088469 loss_val: 0.0765109273 - dice_tr: 0.2932908988 dice_val: 0.7217974401 - Last Saved
+epoch:11 - loss_tr: 0.0694345483 loss_val: 0.0717224752 - dice_tr: 0.3635033416 dice_val: 0.7341362398 - Last Saved
+epoch:12 - loss_tr: 0.0639466307 loss_val: 0.0714261750 - dice_tr: 0.3918154141 dice_val: 0.7273534803 - Last Saved
+epoch:13 - loss_tr: 0.0603055182 loss_val: 0.0652404413 - dice_tr: 0.3825508633 dice_val: 0.7339912505 - Last Saved
+epoch:14 - loss_tr: 0.0571139143 loss_val: 0.0632747268 - dice_tr: 0.3902913224 dice_val: 0.7340491293 - Last Saved
+epoch:15 - loss_tr: 0.0543060731 loss_val: 0.0612257862 - dice_tr: 0.3905783052 dice_val: 0.7334782537 - Last Saved
+epoch:16 - loss_tr: 0.0514854491 loss_val: 0.0602847323 - dice_tr: 0.4179296320 dice_val: 0.7344460637 - Last Saved
+epoch:17 - loss_tr: 0.0483249171 loss_val: 0.0587289165 - dice_tr: 0.4422301441 dice_val: 0.7292095149 - Last Saved
+epoch:18 - loss_tr: 0.0458282522 loss_val: 0.0563597436 - dice_tr: 0.4899735011 dice_val: 0.7654251601 - Last Saved
+epoch:19 - loss_tr: 0.0436209815 loss_val: 0.0526797928 - dice_tr: 0.4946935421 dice_val: 0.7691544289 - Last Saved
+epoch:20 - loss_tr: 0.0421426590 loss_val: 0.0517846959 - dice_tr: 0.4923715870 dice_val: 0.7645895539 - Last Saved
+epoch:21 - loss_tr: 0.0408965676 loss_val: 0.0554204071 - dice_tr: 0.4983599911 dice_val: 0.7613294339
+epoch:22 - loss_tr: 0.0401871084 loss_val: 0.0503173485 - dice_tr: 0.4984156644 dice_val: 0.7617912958 - Last Saved
+epoch:23 - loss_tr: 0.0391575430 loss_val: 0.0495088844 - dice_tr: 0.5056118985 dice_val: 0.7567798768 - Last Saved
+epoch:24 - loss_tr: 0.0381765862 loss_val: 0.0542897093 - dice_tr: 0.4990063469 dice_val: 0.7550891845
+epoch:25 - loss_tr: 0.0370688469 loss_val: 0.0490347475 - dice_tr: 0.5013741730 dice_val: 0.7555742994 - Last Saved
+epoch:26 - loss_tr: 0.0356605237 loss_val: 0.0475985606 - dice_tr: 0.5018552228 dice_val: 0.7535993917 - Last Saved
+epoch:27 - loss_tr: 0.0333064058 loss_val: 0.0461310410 - dice_tr: 0.5392726121 dice_val: 0.7762053201 - Last Saved
+epoch:28 - loss_tr: 0.0299566582 loss_val: 0.0464402335 - dice_tr: 0.6567353159 dice_val: 0.7531624746
+epoch:29 - loss_tr: 0.0281543513 loss_val: 0.0453697458 - dice_tr: 0.7176176418 dice_val: 0.7897021348 - Last Saved
+epoch:30 - loss_tr: 0.0264200179 loss_val: 0.0425073592 - dice_tr: 0.7386670397 dice_val: 0.7909886717 - Last Saved
+epoch:31 - loss_tr: 0.0252795863 loss_val: 0.0438282355 - dice_tr: 0.7432082505 dice_val: 0.7947265010
+epoch:32 - loss_tr: 0.0243489391 loss_val: 0.0416505231 - dice_tr: 0.7533467011 dice_val: 0.7836499756 - Last Saved
+epoch:33 - loss_tr: 0.0238087792 loss_val: 0.0410594857 - dice_tr: 0.7538079932 dice_val: 0.7884574288 - Last Saved
+epoch:34 - loss_tr: 0.0237644917 loss_val: 0.0462106594 - dice_tr: 0.7534526322 dice_val: 0.7612534010
+epoch:35 - loss_tr: 0.0241545933 loss_val: 0.0405993422 - dice_tr: 0.7477796630 dice_val: 0.7882892063 - Last Saved
+epoch:36 - loss_tr: 0.0218731175 loss_val: 0.0404660080 - dice_tr: 0.7656414283 dice_val: 0.7972571727 - Last Saved
+epoch:37 - loss_tr: 0.0212962792 loss_val: 0.0397065985 - dice_tr: 0.7587601644 dice_val: 0.7893766386 - Last Saved
+epoch:38 - loss_tr: 0.0205924290 loss_val: 0.0420186379 - dice_tr: 0.7540305879 dice_val: 0.7903869366
+epoch:39 - loss_tr: 0.0198329475 loss_val: 0.0431925761 - dice_tr: 0.7602070099 dice_val: 0.7984051488
+epoch:40 - loss_tr: 0.0194077187 loss_val: 0.0422430466 - dice_tr: 0.8045395741 dice_val: 0.8087061889
+epoch:41 - loss_tr: 0.0187853273 loss_val: 0.0394836262 - dice_tr: 0.8221205999 dice_val: 0.7990188132 - Last Saved
+epoch:42 - loss_tr: 0.0182098444 loss_val: 0.0396470581 - dice_tr: 0.8228376903 dice_val: 0.8024569402
+epoch:43 - loss_tr: 0.0176048100 loss_val: 0.0390488037 - dice_tr: 0.8196800314 dice_val: 0.8034768229 - Last Saved
+epoch:44 - loss_tr: 0.0170723405 loss_val: 0.0393713526 - dice_tr: 0.8262671385 dice_val: 0.8032990953
+epoch:45 - loss_tr: 0.0160564284 loss_val: 0.0382895268 - dice_tr: 0.8783874168 dice_val: 0.7929599191 - Last Saved
+epoch:46 - loss_tr: 0.0152752177 loss_val: 0.0378957939 - dice_tr: 0.9024125859 dice_val: 0.7763225526 - Last Saved
+epoch:47 - loss_tr: 0.0148978361 loss_val: 0.0425255797 - dice_tr: 0.9092714137 dice_val: 0.8151693247
+epoch:48 - loss_tr: 0.0147223518 loss_val: 0.0383473200 - dice_tr: 0.9138912555 dice_val: 0.8179472463
+epoch:49 - loss_tr: 0.0143321108 loss_val: 0.0388600411 - dice_tr: 0.9216472667 dice_val: 0.8197681968
+epoch:50 - loss_tr: 0.0138401761 loss_val: 0.0378665079 - dice_tr: 0.9193390522 dice_val: 0.7922088755 - Last Saved
+epoch:51 - loss_tr: 0.0134755944 loss_val: 0.0380362465 - dice_tr: 0.9275496502 dice_val: 0.8063689852
+epoch:52 - loss_tr: 0.0132112651 loss_val: 0.0409375416 - dice_tr: 0.9302980612 dice_val: 0.8024149862
+epoch:53 - loss_tr: 0.0130044166 loss_val: 0.0417216598 - dice_tr: 0.9318288692 dice_val: 0.8211822982
+epoch:54 - loss_tr: 0.0127908985 loss_val: 0.0396351474 - dice_tr: 0.9247937565 dice_val: 0.8006203161
+epoch:55 - loss_tr: 0.0127087878 loss_val: 0.0402442021 - dice_tr: 0.9291177891 dice_val: 0.7845068814
+epoch:56 - loss_tr: 0.0122993030 loss_val: 0.0425515519 - dice_tr: 0.9331358621 dice_val: 0.8186615815
+epoch:57 - loss_tr: 0.0119878560 loss_val: 0.0405453930 - dice_tr: 0.9320528504 dice_val: 0.7995040644
+epoch:58 - loss_tr: 0.0118775355 loss_val: 0.0407884845 - dice_tr: 0.9335913667 dice_val: 0.7996131989
+epoch:59 - loss_tr: 0.0116284122 loss_val: 0.0413412038 - dice_tr: 0.9333542558 dice_val: 0.7983028797
+epoch:60 - loss_tr: 0.0114568554 loss_val: 0.0420397074 - dice_tr: 0.9307196298 dice_val: 0.8087612542
+epoch:61 - loss_tr: 0.0110969898 loss_val: 0.0423139367 - dice_tr: 0.9374008288 dice_val: 0.7735754677
+epoch:62 - loss_tr: 0.0110302963 loss_val: 0.0412510475 - dice_tr: 0.9363350553 dice_val: 0.7729081801
+epoch:63 - loss_tr: 0.0107885565 loss_val: 0.0445895122 - dice_tr: 0.9437193395 dice_val: 0.7835261469
+epoch:64 - loss_tr: 0.0105737379 loss_val: 0.0456729805 - dice_tr: 0.9418587976 dice_val: 0.7944704215
+epoch:65 - loss_tr: 0.0103457405 loss_val: 0.0425386628 - dice_tr: 0.9404598372 dice_val: 0.7953678505
+epoch:66 - loss_tr: 0.0185114420 loss_val: 0.0374064432 - dice_tr: 0.8883970544 dice_val: 0.8185789888 - Last Saved
+epoch:67 - loss_tr: 0.0116441870 loss_val: 0.0405931470 - dice_tr: 0.9355792647 dice_val: 0.7972231907
+epoch:68 - loss_tr: 0.0102299838 loss_val: 0.0415390649 - dice_tr: 0.9434094362 dice_val: 0.7972040067
+epoch:69 - loss_tr: 0.0095690030 loss_val: 0.0442588526 - dice_tr: 0.9463963589 dice_val: 0.7992266549
+epoch:70 - loss_tr: 0.0091197641 loss_val: 0.0439114574 - dice_tr: 0.9489914599 dice_val: 0.7864496088
+epoch:71 - loss_tr: 0.0090074135 loss_val: 0.0503287790 - dice_tr: 0.9528059830 dice_val: 0.7686630770
+epoch:72 - loss_tr: 0.0088959528 loss_val: 0.0496052235 - dice_tr: 0.9505884098 dice_val: 0.7857458671
+epoch:73 - loss_tr: 0.0088671594 loss_val: 0.0454056965 - dice_tr: 0.9493744887 dice_val: 0.7781629175
+epoch:74 - loss_tr: 0.0089126031 loss_val: 0.0465702120 - dice_tr: 0.9526875230 dice_val: 0.7726274445
+epoch:75 - loss_tr: 0.0085138611 loss_val: 0.0472632870 - dice_tr: 0.9513921447 dice_val: 0.7712967875
+epoch:76 - loss_tr: 0.0085617640 loss_val: 0.0492519067 - dice_tr: 0.9529798134 dice_val: 0.7814552036
+epoch:77 - loss_tr: 0.0084477111 loss_val: 0.0468084462 - dice_tr: 0.9499458234 dice_val: 0.7670858964
+epoch:78 - loss_tr: 0.0082853395 loss_val: 0.0463874284 - dice_tr: 0.9545374439 dice_val: 0.7648181427
+epoch:79 - loss_tr: 0.0082463416 loss_val: 0.0483764598 - dice_tr: 0.9537352119 dice_val: 0.7706654263
+epoch:80 - loss_tr: 0.0081187054 loss_val: 0.0573452674 - dice_tr: 0.9536700853 dice_val: 0.7619821405
+epoch:81 - loss_tr: 0.0080510445 loss_val: 0.0489128732 - dice_tr: 0.9548728162 dice_val: 0.7630478936
+epoch:82 - loss_tr: 0.0079388418 loss_val: 0.0477147997 - dice_tr: 0.9517724163 dice_val: 0.7448085062
+epoch:83 - loss_tr: 0.0078188604 loss_val: 0.0493222461 - dice_tr: 0.9565176682 dice_val: 0.7701340089
+epoch:84 - loss_tr: 0.0077895054 loss_val: 0.0495892470 - dice_tr: 0.9555174058 dice_val: 0.7534554576
+epoch:85 - loss_tr: 0.0076095653 loss_val: 0.0497390144 - dice_tr: 0.9564656997 dice_val: 0.7656600227
+epoch:86 - loss_tr: 0.0073475286 loss_val: 0.0529655369 - dice_tr: 0.9551383624 dice_val: 0.7640747799
+epoch:87 - loss_tr: 0.0072968499 loss_val: 0.0490990170 - dice_tr: 0.9535954308 dice_val: 0.7403707539
+epoch:88 - loss_tr: 0.0071789034 loss_val: 0.0499720318 - dice_tr: 0.9570424614 dice_val: 0.7683216551
+epoch:89 - loss_tr: 0.0073786855 loss_val: 0.0498003779 - dice_tr: 0.9567398138 dice_val: 0.7345019019
+epoch:90 - loss_tr: 0.0069767346 loss_val: 0.0512088573 - dice_tr: 0.9607278196 dice_val: 0.7665921061
+epoch:91 - loss_tr: 0.0068505444 loss_val: 0.0529106181 - dice_tr: 0.9582157728 dice_val: 0.7651477816
+epoch:92 - loss_tr: 0.0068146152 loss_val: 0.0530972731 - dice_tr: 0.9558948102 dice_val: 0.7678386068
+epoch:93 - loss_tr: 0.0066854364 loss_val: 0.0552165574 - dice_tr: 0.9553512231 dice_val: 0.7458923384
+epoch:94 - loss_tr: 0.0064535828 loss_val: 0.0574626698 - dice_tr: 0.9627158159 dice_val: 0.7586029494
+epoch:95 - loss_tr: 0.0063282449 loss_val: 0.0584796015 - dice_tr: 0.9597461728 dice_val: 0.7407165661
+epoch:96 - loss_tr: 0.0061733545 loss_val: 0.0533216313 - dice_tr: 0.9614880634 dice_val: 0.7553298525
+epoch:97 - loss_tr: 0.0063313982 loss_val: 0.0584948983 - dice_tr: 0.9619399815 dice_val: 0.7604905614
+epoch:98 - loss_tr: 0.0061151848 loss_val: 0.0534482199 - dice_tr: 0.9620164727 dice_val: 0.7394185285
+epoch:99 - loss_tr: 0.0060426691 loss_val: 0.0547513839 - dice_tr: 0.9617037138 dice_val: 0.7550954786
+epoch:100 - loss_tr: 0.0059245933 loss_val: 0.0569454893 - dice_tr: 0.9584193742 dice_val: 0.7574958798
+epoch:101 - loss_tr: 0.0058809301 loss_val: 0.0547713468 - dice_tr: 0.9613330059 dice_val: 0.7428334432
+epoch:102 - loss_tr: 0.0057032284 loss_val: 0.0559287607 - dice_tr: 0.9662318616 dice_val: 0.7547389671
+epoch:103 - loss_tr: 0.0054577955 loss_val: 0.0561433703 - dice_tr: 0.9658114517 dice_val: 0.7564755071
+epoch:104 - loss_tr: 0.0053313937 loss_val: 0.0563719840 - dice_tr: 0.9640515260 dice_val: 0.7286757558
+epoch:105 - loss_tr: 0.0051912798 loss_val: 0.0589392572 - dice_tr: 0.9669535248 dice_val: 0.7603956682
+epoch:106 - loss_tr: 0.0052299600 loss_val: 0.0566522159 - dice_tr: 0.9645408732 dice_val: 0.7212267265
+epoch:107 - loss_tr: 0.0051020457 loss_val: 0.0577271790 - dice_tr: 0.9655642304 dice_val: 0.7527770009
+epoch:108 - loss_tr: 0.0050928970 loss_val: 0.0636828980 - dice_tr: 0.9647476361 dice_val: 0.7632528390
+epoch:109 - loss_tr: 0.0050441298 loss_val: 0.0615084473 - dice_tr: 0.9656415861 dice_val: 0.7683505138
+epoch:110 - loss_tr: 0.0049773407 loss_val: 0.0581976199 - dice_tr: 0.9646543651 dice_val: 0.7463647975
+epoch:111 - loss_tr: 0.0047344385 loss_val: 0.0586952445 - dice_tr: 0.9644617843 dice_val: 0.7364298105
+epoch:112 - loss_tr: 0.0048197397 loss_val: 0.0584652551 - dice_tr: 0.9667052497 dice_val: 0.7269105412
+epoch:113 - loss_tr: 0.0046566790 loss_val: 0.0611973965 - dice_tr: 0.9668702088 dice_val: 0.7594750764
+epoch:114 - loss_tr: 0.0044842210 loss_val: 0.0635622754 - dice_tr: 0.9657461581 dice_val: 0.7553392123
+epoch:115 - loss_tr: 0.0044459194 loss_val: 0.0650023063 - dice_tr: 0.9662082309 dice_val: 0.7499576402
+epoch:116 - loss_tr: 0.0042035089 loss_val: 0.0638848678 - dice_tr: 0.9705095196 dice_val: 0.7643789386
+epoch:117 - loss_tr: 0.0042400240 loss_val: 0.0625478630 - dice_tr: 0.9648821393 dice_val: 0.7310011762
+epoch:118 - loss_tr: 0.0042235871 loss_val: 0.0653583357 - dice_tr: 0.9675608594 dice_val: 0.7484497136
+epoch:119 - loss_tr: 0.0040769407 loss_val: 0.0647903667 - dice_tr: 0.9656428185 dice_val: 0.7534018669
+epoch:120 - loss_tr: 0.0040383071 loss_val: 0.0747685223 - dice_tr: 0.9700028605 dice_val: 0.7630677067
+epoch:121 - loss_tr: 0.0040098533 loss_val: 0.0686981492 - dice_tr: 0.9687761566 dice_val: 0.7675109044
+epoch:122 - loss_tr: 0.0039071686 loss_val: 0.0656630150 - dice_tr: 0.9713268598 dice_val: 0.7583024202
+epoch:123 - loss_tr: 0.0038014334 loss_val: 0.0691362799 - dice_tr: 0.9702446545 dice_val: 0.7693059762
+epoch:124 - loss_tr: 0.0036958673 loss_val: 0.0706894711 - dice_tr: 0.9685612841 dice_val: 0.7451052588
+epoch:125 - loss_tr: 0.0036897872 loss_val: 0.0690172679 - dice_tr: 0.9706785271 dice_val: 0.7581513228
+epoch:126 - loss_tr: 0.0035525988 loss_val: 0.0695102329 - dice_tr: 0.9680372104 dice_val: 0.7490855094
+epoch:127 - loss_tr: 0.0034678575 loss_val: 0.0715002727 - dice_tr: 0.9732743260 dice_val: 0.7418243625
+epoch:128 - loss_tr: 0.0034554317 loss_val: 0.0703405957 - dice_tr: 0.9697127050 dice_val: 0.7521758423
+epoch:129 - loss_tr: 0.0037921029 loss_val: 0.0784685811 - dice_tr: 0.9713453913 dice_val: 0.7428665652
+epoch:130 - loss_tr: 0.0039894597 loss_val: 0.0690947141 - dice_tr: 0.9663464873 dice_val: 0.7554435885
+epoch:131 - loss_tr: 0.0033802991 loss_val: 0.0725876603 - dice_tr: 0.9707710864 dice_val: 0.7487879550
+epoch:132 - loss_tr: 0.0031122982 loss_val: 0.0731267141 - dice_tr: 0.9743804638 dice_val: 0.7350000001
+epoch:133 - loss_tr: 0.0030899429 loss_val: 0.0681951263 - dice_tr: 0.9757488692 dice_val: 0.7457861347
+epoch:134 - loss_tr: 0.0030865304 loss_val: 0.0729043162 - dice_tr: 0.9696961793 dice_val: 0.7509375149
+epoch:135 - loss_tr: 0.0030836009 loss_val: 0.0853729207 - dice_tr: 0.9692184479 dice_val: 0.7191826656
+epoch:136 - loss_tr: 0.0031944295 loss_val: 0.0866158561 - dice_tr: 0.9734613566 dice_val: 0.7470593026
+epoch:137 - loss_tr: 0.0030882745 loss_val: 0.0735387021 - dice_tr: 0.9737040734 dice_val: 0.7278237293
+epoch:138 - loss_tr: 0.0030581771 loss_val: 0.0834315327 - dice_tr: 0.9739358771 dice_val: 0.7517801803
+epoch:139 - loss_tr: 0.0028990820 loss_val: 0.0735993004 - dice_tr: 0.9729896337 dice_val: 0.7588908265
+epoch:140 - loss_tr: 0.0028020171 loss_val: 0.0745150261 - dice_tr: 0.9700390253 dice_val: 0.7434319428
+epoch:141 - loss_tr: 0.0027431896 loss_val: 0.0749496745 - dice_tr: 0.9749826973 dice_val: 0.7424991136
+epoch:142 - loss_tr: 0.0027168072 loss_val: 0.0779013820 - dice_tr: 0.9751246570 dice_val: 0.7513007572
+epoch:143 - loss_tr: 0.0027367956 loss_val: 0.0804643219 - dice_tr: 0.9747352378 dice_val: 0.7446713081
+epoch:144 - loss_tr: 0.0026750546 loss_val: 0.0749484791 - dice_tr: 0.9775762651 dice_val: 0.7160984355
+epoch:145 - loss_tr: 0.0030228596 loss_val: 0.0810443015 - dice_tr: 0.9714545500 dice_val: 0.7519377863
+epoch:146 - loss_tr: 0.0031155890 loss_val: 0.0764717741 - dice_tr: 0.9754213227 dice_val: 0.7403328640
+epoch:147 - loss_tr: 0.0026399898 loss_val: 0.0774286166 - dice_tr: 0.9759302430 dice_val: 0.7469200894
+epoch:148 - loss_tr: 0.0024210068 loss_val: 0.0807751611 - dice_tr: 0.9783960645 dice_val: 0.7532253980
+epoch:149 - loss_tr: 0.0023035507 loss_val: 0.0808352719 - dice_tr: 0.9775461856 dice_val: 0.7437343239
+epoch:150 - loss_tr: 0.0023430745 loss_val: 0.0850538691 - dice_tr: 0.9766808860 dice_val: 0.7524935336
+epoch:151 - loss_tr: 0.0024435491 loss_val: 0.0818195258 - dice_tr: 0.9767972821 dice_val: 0.7427201848
+epoch:152 - loss_tr: 0.0025232930 loss_val: 0.0797194056 - dice_tr: 0.9762434228 dice_val: 0.7372036897
+epoch:153 - loss_tr: 0.0025676470 loss_val: 0.0768841977 - dice_tr: 0.9728442525 dice_val: 0.7097475274
+epoch:154 - loss_tr: 0.0023605285 loss_val: 0.0740162612 - dice_tr: 0.9766314198 dice_val: 0.7210192030
+epoch:155 - loss_tr: 0.0023545534 loss_val: 0.0811988860 - dice_tr: 0.9788151774 dice_val: 0.7523619557
+epoch:156 - loss_tr: 0.0024383719 loss_val: 0.0827436132 - dice_tr: 0.9775628696 dice_val: 0.7383785578
+epoch:157 - loss_tr: 0.0026673748 loss_val: 0.0781231429 - dice_tr: 0.9751623992 dice_val: 0.7423489460
+epoch:158 - loss_tr: 0.0023179275 loss_val: 0.0814075387 - dice_tr: 0.9801409551 dice_val: 0.7366245757
+epoch:159 - loss_tr: 0.0021520307 loss_val: 0.0808191043 - dice_tr: 0.9754678153 dice_val: 0.7400396057
+epoch:160 - loss_tr: 0.0022002878 loss_val: 0.0833300988 - dice_tr: 0.9758543775 dice_val: 0.7359590567
+epoch:161 - loss_tr: 0.0021399517 loss_val: 0.0853799281 - dice_tr: 0.9795085924 dice_val: 0.7450625592
+epoch:162 - loss_tr: 0.0020668156 loss_val: 0.0872570519 - dice_tr: 0.9784821747 dice_val: 0.7461060556
+epoch:163 - loss_tr: 0.0020228067 loss_val: 0.0850069563 - dice_tr: 0.9778851791 dice_val: 0.7273314305
+epoch:164 - loss_tr: 0.0020236400 loss_val: 0.0808466798 - dice_tr: 0.9811137220 dice_val: 0.7102006763
+epoch:165 - loss_tr: 0.0019917766 loss_val: 0.0842733924 - dice_tr: 0.9777992929 dice_val: 0.7309891402
+epoch:166 - loss_tr: 0.0020103796 loss_val: 0.0855719919 - dice_tr: 0.9779841749 dice_val: 0.7477907417
+epoch:167 - loss_tr: 0.0019308104 loss_val: 0.0817598999 - dice_tr: 0.9779458145 dice_val: 0.7263597361
+epoch:168 - loss_tr: 0.0020357590 loss_val: 0.0851008650 - dice_tr: 0.9789406430 dice_val: 0.7384567915
+epoch:169 - loss_tr: 0.0021130224 loss_val: 0.0872203323 - dice_tr: 0.9777983241 dice_val: 0.7323114736
+epoch:170 - loss_tr: 0.0020613485 loss_val: 0.0875545188 - dice_tr: 0.9805009114 dice_val: 0.7384861088
+epoch:171 - loss_tr: 0.0019270146 loss_val: 0.0842173772 - dice_tr: 0.9767931159 dice_val: 0.7198116579
+epoch:172 - loss_tr: 0.0019008414 loss_val: 0.0958575010 - dice_tr: 0.9765079126 dice_val: 0.7363695696
+epoch:173 - loss_tr: 0.0018456346 loss_val: 0.0823266581 - dice_tr: 0.9790949143 dice_val: 0.7287436502
+epoch:174 - loss_tr: 0.0017752177 loss_val: 0.0888056123 - dice_tr: 0.9805517337 dice_val: 0.7530192589
+epoch:175 - loss_tr: 0.0017799762 loss_val: 0.0892216032 - dice_tr: 0.9802965766 dice_val: 0.7479978882
+epoch:176 - loss_tr: 0.0017502509 loss_val: 0.0856699403 - dice_tr: 0.9800837863 dice_val: 0.7191719449
+epoch:177 - loss_tr: 0.0017824090 loss_val: 0.0866224376 - dice_tr: 0.9822621661 dice_val: 0.7212178184
+epoch:178 - loss_tr: 0.0019560189 loss_val: 0.0861469376 - dice_tr: 0.9787406389 dice_val: 0.7318129904
+epoch:179 - loss_tr: 0.0018688496 loss_val: 0.0881665208 - dice_tr: 0.9781169435 dice_val: 0.7317514078
+epoch:180 - loss_tr: 0.0017074478 loss_val: 0.0891244658 - dice_tr: 0.9808143962 dice_val: 0.7395997935
+epoch:181 - loss_tr: 0.0015957052 loss_val: 0.0903533057 - dice_tr: 0.9825118324 dice_val: 0.7335757381
+epoch:182 - loss_tr: 0.0015653563 loss_val: 0.0899626508 - dice_tr: 0.9815844778 dice_val: 0.7234341473
+epoch:183 - loss_tr: 0.0016083983 loss_val: 0.0880026165 - dice_tr: 0.9810356533 dice_val: 0.7418930513
+epoch:184 - loss_tr: 0.0016431865 loss_val: 0.0904175006 - dice_tr: 0.9777608222 dice_val: 0.7314132700
+epoch:185 - loss_tr: 0.0016364735 loss_val: 0.1021525872 - dice_tr: 0.9816272125 dice_val: 0.7429012014
+epoch:186 - loss_tr: 0.0017223267 loss_val: 0.0859570432 - dice_tr: 0.9803110872 dice_val: 0.7221000805
+epoch:187 - loss_tr: 0.0017035917 loss_val: 0.0929147433 - dice_tr: 0.9792108743 dice_val: 0.7286285863
+epoch:188 - loss_tr: 0.0015714397 loss_val: 0.0914406126 - dice_tr: 0.9828300168 dice_val: 0.7252752309
+epoch:189 - loss_tr: 0.0015523641 loss_val: 0.0938416663 - dice_tr: 0.9842281401 dice_val: 0.7266671986
+epoch:190 - loss_tr: 0.0015340035 loss_val: 0.0954371274 - dice_tr: 0.9840225794 dice_val: 0.7246316698
+epoch:191 - loss_tr: 0.0016209140 loss_val: 0.0945584551 - dice_tr: 0.9780559400 dice_val: 0.7435351454
+epoch:192 - loss_tr: 0.0016009272 loss_val: 0.0923632793 - dice_tr: 0.9799436880 dice_val: 0.7219823085
+epoch:193 - loss_tr: 0.0015322215 loss_val: 0.0979081070 - dice_tr: 0.9822999449 dice_val: 0.7364665772
+epoch:194 - loss_tr: 0.0014681733 loss_val: 0.0953951067 - dice_tr: 0.9807648778 dice_val: 0.6963985209
+epoch:195 - loss_tr: 0.0015615170 loss_val: 0.0943606279 - dice_tr: 0.9828748193 dice_val: 0.7345170583
+epoch:196 - loss_tr: 0.0014983435 loss_val: 0.0929680859 - dice_tr: 0.9828557551 dice_val: 0.7238777277
+epoch:197 - loss_tr: 0.0014497010 loss_val: 0.0955021617 - dice_tr: 0.9814868707 dice_val: 0.7331063793
+epoch:198 - loss_tr: 0.0014316988 loss_val: 0.0958438518 - dice_tr: 0.9837519077 dice_val: 0.7527442762
+epoch:199 - loss_tr: 0.0014214436 loss_val: 0.0983294693 - dice_tr: 0.9826058179 dice_val: 0.7453187605

@@ -1,0 +1,24 @@
+Train ID 	: id01 
+Dataset 	: abide_caltech
+The code runs deterministicaly.
+/itet-stor/gtombak/net_scratch/conda_envs/pytcu10/lib/python3.8/site-packages/torchvision/transforms/functional.py:132: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  /opt/conda/conda-bld/pytorch_1616554786078/work/torch/csrc/utils/tensor_numpy.cpp:143.)
+  img = torch.from_numpy(np.array(pic, np.float32, copy=False))
+epoch:0 - loss_tr: 1.0834247719 loss_val: 0.6246214189 - dice_tr: 0.2419662154 dice_val: 0.6808026192 - Last Saved
+epoch:1 - loss_tr: 0.4361887166 loss_val: 0.4750280375 - dice_tr: 0.4106509985 dice_val: 0.6522088448 - Last Saved
+epoch:2 - loss_tr: 0.3358436835 loss_val: 0.4464341890 - dice_tr: 0.4887324762 dice_val: 0.6688305310 - Last Saved
+epoch:3 - loss_tr: 0.2762423942 loss_val: 0.4116937509 - dice_tr: 0.5880233026 dice_val: 0.7999907361 - Last Saved
+epoch:4 - loss_tr: 0.2371260984 loss_val: 0.4305434791 - dice_tr: 0.6583335221 dice_val: 0.5551800187
+epoch:5 - loss_tr: 0.1996436580 loss_val: 0.3953207985 - dice_tr: 0.7455103847 dice_val: 0.7278552996 - Last Saved
+epoch:6 - loss_tr: 0.1841194551 loss_val: 0.3876775688 - dice_tr: 0.7632189299 dice_val: 0.7979926260 - Last Saved
+epoch:7 - loss_tr: 0.1810650392 loss_val: 0.3820776782 - dice_tr: 0.7724395280 dice_val: 0.8114255866 - Last Saved
+epoch:8 - loss_tr: 0.1675303805 loss_val: 0.3812962053 - dice_tr: 0.7800699970 dice_val: 0.8041207498 - Last Saved
+epoch:9 - loss_tr: 0.1636059145 loss_val: 0.3792189147 - dice_tr: 0.7909139010 dice_val: 0.8426605022 - Last Saved
+epoch:10 - loss_tr: 0.1609696005 loss_val: 0.3822807861 - dice_tr: 0.8135252077 dice_val: 0.8474852525
+epoch:11 - loss_tr: 0.1640785438 loss_val: 0.3800010252 - dice_tr: 0.8206167572 dice_val: 0.8323553203
+epoch:12 - loss_tr: 0.1548636475 loss_val: 0.3766434804 - dice_tr: 0.8192948265 dice_val: 0.8431966568 - Last Saved
+epoch:13 - loss_tr: 0.1554252415 loss_val: 0.3784810908 - dice_tr: 0.8237657516 dice_val: 0.8257390459
+epoch:14 - loss_tr: 0.1538106626 loss_val: 0.3743964363 - dice_tr: 0.8280372366 dice_val: 0.8011908862 - Last Saved
+epoch:15 - loss_tr: 0.1552343911 loss_val: 0.3743041697 - dice_tr: 0.8366674234 dice_val: 0.7779914911 - Last Saved
+epoch:16 - loss_tr: 0.1552424676 loss_val: 0.3747584193 - dice_tr: 0.8411254306 dice_val: 0.8442046839
+epoch:17 - loss_tr: 0.1503480613 loss_val: 0.3722315053 - dice_tr: 0.8435618211 dice_val: 0.8536878720 - Last Saved
+epoch:18 - loss_tr: 0.1547854180 loss_val: 0.3707334256 - dice_tr: 0.8485398509 dice_val: 0.8533432406 - Last Saved

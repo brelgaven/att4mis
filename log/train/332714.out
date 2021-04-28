@@ -1,0 +1,8 @@
+Train ID 	: trans01_t0 
+Dataset 	: abide_caltech
+The code runs deterministicaly.
+/itet-stor/gtombak/net_scratch/conda_envs/pytcu10/lib/python3.8/site-packages/torchvision/transforms/functional.py:132: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  /opt/conda/conda-bld/pytorch_1616554786078/work/torch/csrc/utils/tensor_numpy.cpp:143.)
+  img = torch.from_numpy(np.array(pic, np.float32, copy=False))
+epoch:0 - loss_tr: 0.9953937724 loss_val: 0.6088437766 - dice_tr: 0.2047379460 dice_val: 0.6439942238 - Last Saved
+epoch:1 - loss_tr: 0.4776254973 loss_val: 0.4925689317 - dice_tr: 0.2923922229 dice_val: 0.6661837980 - Last Saved
+epoch:2 - loss_tr: 0.3957179134 loss_val: 0.4536389932 - dice_tr: 0.3641554149 dice_val: 0.7092868393 - Last Saved

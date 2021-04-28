@@ -1,3 +1,4 @@
+*.out
 *.pth
 *.hdf5
 results/
