@@ -46,15 +46,11 @@ config.embedder = {
 #     'causal': False,    
 # }
 
-config.transLayer = {
+transformer = {
+    'num_layers'        : 6,
     'd_model'           : np.prod(patch_size),
     'nhead'             : 4,  
-    'dim_feedforward'   : 4,
-}
-
-config.transformer = {
-    'encoder_layer' : nn.TransformerEncoderLayer(**config.transLayer),
-    'num_layers'    : 6,  
+    'dim_feedforward'   : 4,  
 }
 
 #%% Try the Model

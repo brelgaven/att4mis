@@ -14,7 +14,7 @@ batch_size = 16
 num_classes = 15
 
 save_images = True
-path_to_save_images = './results/%s/%s'%(data_identifier_source, experiment_name)
+path_to_save_images = './results/%s/test/%s'%(data_identifier_source, experiment_name)
 path_to_load_pretrained_model = './pre_trained/abide_caltech_model_segmentation01_0.pth'
 
 
