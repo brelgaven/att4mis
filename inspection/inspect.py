@@ -107,5 +107,5 @@ data_identifier_source = 'abide_caltech'
 it = InspectTrain(data_identifier_source)
 # %%
 
-it.show('save')
+it.show('dice_val')
 # %%

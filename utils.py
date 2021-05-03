@@ -6,6 +6,8 @@ import pandas as pd
 import random
 import torch
 import torch.nn as nn
+import pickle5 as pickle
+from importlib.machinery import SourceFileLoader
 
 import pdb
 
@@ -117,19 +119,31 @@ def line_prepender(filename, line):
 # Training data save function for better inspection
 # ===============
 
-def pre_training_save(config_file, exp_config):
+def pre_training_save(exp_config):
     dir_save = file_new('./results/' + exp_config.data_identifier_source + '/train/' + exp_config.train_id + '/')
+    
+    train_id = dir_save.rsplit('/')[-2]
+    
+    if train_id != exp_config.train_id:
+        print('Train ID changed from {} to {}'.format(exp_config.train_id, train_id))
+        exp_config.train_id = train_id
+    
     create_directory(dir_save)
     cfg_path = os.path.join(dir_save, 'cfg.py')
-    copyfile(config_file, cfg_path)
+    copyfile(exp_config.__file__, cfg_path)
     
-    return dir_save
+    setattr(exp_config, 'save_path', dir_save)
     
-def save_training(training_data, config_file, exp_config, dir_save):
+    return exp_config
+    
+def save_training(exp_config, training_data):
+    
+    dir_save = exp_config.save_path
     
     create_directory(dir_save)
     csv_path = os.path.join(dir_save, 'epoch_data.csv')
     cfg_path = os.path.join(dir_save, 'cfg.py')
+    pkl_path = os.path.join(dir_save, 'data.pickle')
     
     training_data['epoch_data'].to_csv(csv_path)
     
@@ -143,3 +157,86 @@ def save_training(training_data, config_file, exp_config, dir_save):
     sumSTR = idSTR + dateSTR + timSTR + pthSTR + bestSTR + cfgSTR
     
     line_prepender(cfg_path, sumSTR)
+    
+    with open(pkl_path , 'wb') as f:
+        pickle.dump(training_data, f, protocol=pickle.HIGHEST_PROTOCOL)
+
+# ===============
+# Save Test
+# ===============
+
+def pre_test_save(exp_config):
+    
+    if not hasattr(exp_config, 'save_path'):
+        default_sp = './results/%s/test/%s'%(exp_config.data_identifier_source, exp_config.experiment_name)
+        setattr(exp_config, 'save_path', default_sp)
+    
+    dir_save = file_new(exp_config.save_path)
+    
+    if dir_save != exp_config.save_path:
+        print('Save path changed to ', dir_save)
+    
+    exp_config.save_path = dir_save
+    create_directory(dir_save)
+    
+    cfg_path = os.path.join(dir_save, 'cfg.py')
+    copyfile(exp_config.__file__, cfg_path)
+    
+    if hasattr(exp_config, '__fileTrain__'):
+        cfg_train_path = os.path.join(dir_save, 'cfg_train.py')
+        copyfile(exp_config.__fileTrain__, cfg_train_path)
+    
+    return exp_config
+
+# ===============
+# Merging Modules
+# ===============
+
+def merge_modules(*modules):
+    
+    module_list = list(modules)
+    
+    if len(module_list) == 1:
+        return module_list[0]
+    
+    module_root = module_list[0]
+    module_add = module_list[1]
+
+    for attr in list(set(dir(module_root) + dir(module_add))):
+        if not hasattr(module_root, attr):
+            attr_value = getattr(module_add, attr, None)
+            setattr(module_root, attr, attr_value)
+    
+    module_list[1] = module_root        
+    module_list.pop(0)
+    
+    return merge_modules(*module_list)
+    
+# ===============
+# Training to Test Module
+# ===============
+
+def train2test(test_config):
+    
+    train_id = getattr(test_config, 'train_id', None)
+    if train_id is None:
+        return test_config
+    
+    dir_save = './results/' + test_config.data_identifier_source + '/train/' + train_id + '/'
+    cfg_tr_path = dir_save + 'cfg.py'
+    pkl_tr_path = dir_save + 'data.pickle'
+    
+    cfg_tr_name = cfg_tr_path.split('/')[-1].rstrip('.py')
+    train_config = SourceFileLoader(cfg_tr_name, cfg_tr_path).load_module()
+    
+    cfg = merge_modules(test_config, train_config)
+    setattr(cfg, '__fileTrain__', train_config.__file__)
+    
+    attr_pth = 'model_path'
+    
+    if not hasattr(cfg, attr_pth):
+        with open(pkl_tr_path, 'rb') as f:
+            training_data = pickle.load(f)
+        setattr(cfg, attr_pth, training_data['pth_save'])
+    
+    return cfg

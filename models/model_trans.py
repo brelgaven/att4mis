@@ -28,8 +28,11 @@ def transConfig(cfg):
 
 class BottleNeck(nn.Module):
     def __init__(self, cfg):
+        self.noFlag = False
         self.idFlag = False
         super(BottleNeck, self).__init__()
+        if hasattr(cfg, 'noBtNk'):
+            self.noFlag = cfg.noBtNk
         if hasattr(cfg, 'performer'):
             self.embedder = Embedder(**cfg.embedder)
             self.transformer = Performer(**cfg.performer)
@@ -40,7 +43,9 @@ class BottleNeck(nn.Module):
             self.idFlag = True
         
     def forward(self, x):
-        if self.idFlag == True:
+        if self.noFlag == True:
+            y = 0.0*x
+        elif self.idFlag == True:
             y = x
         else:
             z = self.embedder(x)

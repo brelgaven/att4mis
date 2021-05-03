@@ -61,3 +61,5 @@ model = Ctun(config).cuda()
 model.cuda()
 y, y_sigmoid, y_argmax = model(x)
 print('Model forward works.') 
+
+# %%

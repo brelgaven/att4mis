@@ -14,6 +14,7 @@ matplotlib.use('Agg')
 import pdb
 
 from utils import *
+from test_segmentation_source import test_after_train
 import pandas as pd
 from timeit import default_timer as timer
 from datetime import datetime
@@ -105,7 +106,7 @@ def train_segmentation_network(exp_config, model, trainable_parameters, loader_t
 
     return training_data 
 
-def main(exp_config):
+def main_train(exp_config):
     
     print('Train ID \t:', exp_config.train_id, '\nDataset \t:', exp_config.data_identifier_source)
     
@@ -128,6 +129,8 @@ def main(exp_config):
     # =====================    
     model = Ctun(exp_config).cuda()
     model.cuda()
+    if hasattr(exp_config, 'pretrain_path'):
+        model.load_state_dict(torch.load(exp_config.pretrain_path))
     
     # =========================
     # Load source dataset
@@ -149,10 +152,12 @@ if __name__ == '__main__':
     config_file = args.EXP_PATH
     config_module = config_file.split('/')[-1].rstrip('.py')
         
-    exp_config = SourceFileLoader(config_module, config_file).load_module() # exp_config stores configurations in the given config file under experiments folder.
+    exp_config = SourceFileLoader(config_module, config_file).load_module()
+    exp_config = pre_training_save(exp_config)
 
-    dir_save = pre_training_save(config_file, exp_config)
+    training_data = main_train(exp_config=exp_config)
     
-    training_data = main(exp_config=exp_config)
+    save_training(exp_config, training_data)
     
-    save_training(training_data, config_file, exp_config, dir_save)
+    if hasattr(exp_config, 'test'):
+        test_after_train(exp_config)

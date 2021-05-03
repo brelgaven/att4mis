@@ -3,8 +3,6 @@ from data import data_loader
 import argparse
 import torch
 from models.ctun import Ctun
-#import torch.nn as nn
-#import torch.optim as optim
 import sklearn.metrics as met
 import numpy as np
 from utils import *
@@ -16,8 +14,8 @@ import pdb
 
 def test_segmentation_network(exp_config, model, loader_test):
     
-    create_directory(exp_config.path_to_save_images)
-    f = open(('%s/dice_score.txt')%exp_config.path_to_save_images, "w")
+    create_directory(exp_config.save_path)
+    f = open(('%s/dice_score.txt')%exp_config.save_path, "w")
     
     model.eval()
     
@@ -42,7 +40,7 @@ def test_segmentation_network(exp_config, model, loader_test):
         
         if counter == exp_config.image_size[2]:
             if exp_config.save_images:
-                save_volume(data_volume, target_volume, pred_volume, counter_volume, exp_config.path_to_save_images)
+                save_volume(data_volume, target_volume, pred_volume, counter_volume, exp_config.save_path)
             dice_for_each_class = met.f1_score(target_volume.flatten(), pred_volume.flatten(), average = None)
             dice_volume = np.mean(dice_for_each_class)
             dice_total += dice_volume
@@ -58,7 +56,10 @@ def test_segmentation_network(exp_config, model, loader_test):
     
     f.close()
         
-def main(exp_config):
+def main_test(exp_config):
+    
+    print('Experiment Name :\t', exp_config.experiment_name)
+    print('Used Model Path :\t', exp_config.model_path)
 
     # =====================
     # Define network architecture
@@ -74,12 +75,30 @@ def main(exp_config):
     # =========================
     # Load pre_trained model
     # =========================
-    model.load_state_dict(torch.load(exp_config.path_to_load_pretrained_model))
+    model.load_state_dict(torch.load(exp_config.model_path))
     
     # =========================
     # Test on source data
     # =========================
     test_segmentation_network(exp_config, model, test_loader)
+
+def test_after_train(train_cfg):
+    
+    print('\nTraining Finished\nTesting Starts\n')
+    
+    exp_config = train_cfg
+    test_dict = train_cfg.test
+    setattr(exp_config, '__fileTrain__', exp_config.__file__)
+    delattr(exp_config, 'save_path')
+    
+    for key in test_dict.keys():
+        setattr(exp_config, key, test_dict[key])
+        
+    exp_config = pre_test_save(exp_config)
+    exp_config = train2test(exp_config)
+    
+    main_test(exp_config=exp_config)
+    
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Script for training")
@@ -88,8 +107,9 @@ if __name__ == '__main__':
 
     config_file = args.EXP_PATH
     config_module = config_file.split('/')[-1].rstrip('.py')
-        
-    exp_config = SourceFileLoader(config_module, config_file).load_module() # exp_config stores configurations in the given config file under experiments folder.
-
-    main(exp_config=exp_config)
-
+    
+    exp_config = SourceFileLoader(config_module, config_file).load_module()
+    exp_config = pre_test_save(exp_config)
+    exp_config = train2test(exp_config)
+    
+    main_test(exp_config=exp_config)
