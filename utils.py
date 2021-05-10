@@ -1,4 +1,5 @@
 import os
+import sys
 from shutil import copyfile
 import matplotlib.pyplot as plt
 import numpy as np
@@ -80,8 +81,8 @@ def save_volume(image, label, prediction, volume_id, path):
     
     for i in range(label.shape[0]):
         plt.imsave('%s/%d_image.png'%(path_to_volume, i), np.rot90(np.squeeze(image[i])), cmap = plt.cm.bone)
-        plt.imsave('%s/%d_label.png'%(path_to_volume, i), np.rot90(np.squeeze(label[i])), cmap = plt.get_cmap('tab10'))
-        plt.imsave('%s/%d_prediction.png'%(path_to_volume, i), np.rot90(np.squeeze(prediction[i])), cmap = plt.get_cmap('tab10'))
+        plt.imsave('%s/%d_label.png'%(path_to_volume, i), np.rot90(np.squeeze(label[i])), cmap = plt.get_cmap('tab20'))
+        plt.imsave('%s/%d_prediction.png'%(path_to_volume, i), np.rot90(np.squeeze(prediction[i])), cmap = plt.get_cmap('tab20'))
 
 # ===============
 # Change path name by adding "_i" if file/folder exist
@@ -240,3 +241,12 @@ def train2test(test_config):
         setattr(cfg, attr_pth, training_data['pth_save'])
     
     return cfg
+
+# ===============
+# Exiting the Program by Deleting Save Path
+# ===============
+
+def external_exit(exp_config):
+    if not os.path.exists(exp_config.save_path):
+        sys.exit("The save path cannot be found, exiting the process.")
+    

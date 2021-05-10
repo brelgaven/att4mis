@@ -6,6 +6,7 @@ from models.ctun import Ctun
 import sklearn.metrics as met
 import numpy as np
 from utils import *
+import sys
 
 import matplotlib
 matplotlib.use('Agg')
@@ -38,7 +39,12 @@ def test_segmentation_network(exp_config, model, loader_test):
         
         counter += data.shape[0]
         
-        if counter == exp_config.image_size[2]:
+        if hasattr(exp_config, 'no_slices'):
+            slice_per_volume = exp_config.no_slices[counter_volume]
+        else:
+            slice_per_volume = exp_config.image_size[2]
+        
+        if counter == slice_per_volume:
             if exp_config.save_images:
                 save_volume(data_volume, target_volume, pred_volume, counter_volume, exp_config.save_path)
             dice_for_each_class = met.f1_score(target_volume.flatten(), pred_volume.flatten(), average = None)
@@ -50,6 +56,11 @@ def test_segmentation_network(exp_config, model, loader_test):
             
             counter = 0
             counter_volume += 1
+            
+        if counter > slice_per_volume:
+            sys.exit("{} > {} ! \n Change the batch size, exiting the process.".format(counter, slice_per_volume))
+                
+        external_exit(exp_config)
             
     print('Average Dice score of all volumes = %f'%(dice_total / counter_volume))
     f.write(('Average\t%.10f \n')%(dice_volume))
@@ -88,7 +99,8 @@ def test_after_train(train_cfg):
     
     exp_config = train_cfg
     test_dict = train_cfg.test
-    setattr(exp_config, '__fileTrain__', exp_config.__file__)
+    train_cfg_path = os.path.join(exp_config.save_path, 'cfg.py')
+    setattr(exp_config, '__fileTrain__', train_cfg_path)
     delattr(exp_config, 'save_path')
     
     for key in test_dict.keys():

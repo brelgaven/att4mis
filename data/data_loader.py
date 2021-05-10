@@ -96,17 +96,19 @@ def getHCPT2w(batch_size, TF):
     return train_loader, test_loader, val_loader
 
 def getNCI(batch_size, TF):
-    path_train = 'data/nci/data_2d_size_256_256_res_0.625_0.625_cv_fold_1.hdf5'
-    path_validation = 'data/nci/------------'
-    path_test = 'data/nci/------------'
+    path_all = 'data/nci/data_2d_size_256_256_res_0.625_0.625_cv_fold_1.hdf5'
+    train_keys = ['images_train', 'masks_train']
+    test_keys = ['images_test', 'masks_test']
+    val_keys = ['images_validation', 'masks_validation']
+    # ['images_test', 'images_train', 'images_validation', 'masks_test', 'masks_train', 'masks_validation']
     
-    ds_train = HDF5Dataset.HDF5Dataset(path_train, TF)
+    ds_train = HDF5Dataset.HDF5Dataset(path_all, TF, keys=train_keys)
     train_loader = torch.utils.data.DataLoader(ds_train, batch_size = batch_size, shuffle = True)
     
-    ds_test = HDF5Dataset.HDF5Dataset(path_test, TF)
+    ds_test = HDF5Dataset.HDF5Dataset(path_all, TF, keys=test_keys)
     test_loader = torch.utils.data.DataLoader(ds_test, batch_size = batch_size, shuffle = False)
     
-    ds_validation = HDF5Dataset.HDF5Dataset(path_validation, TF)
+    ds_validation = HDF5Dataset.HDF5Dataset(path_all, TF, keys=val_keys)
     val_loader = torch.utils.data.DataLoader(ds_validation, batch_size = batch_size, shuffle = False)
     
     return train_loader, test_loader, val_loader

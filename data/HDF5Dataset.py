@@ -8,16 +8,21 @@ class HDF5Dataset(data.Dataset):
     Input params:
         path: Path to the folder containing the dataset (one or multiple HDF5 files).
         transform: PyTorch transform to apply to every data instance (default = None).
+        keys: Optional keys for images and labels (default = None).
     """
-    def __init__(self, path, transform = None):
+    def __init__(self, path, transform = None, keys = None):
         super().__init__()
         self.transform = transform
         self.main_path = path
         
         reader = h5py.File(path, 'r')
 
-        self.images = reader['images']
-        self.labels = reader['labels']
+        if keys is None:
+            self.images = reader['images']
+            self.labels = reader['labels']
+        else:
+            self.images = reader[keys[0]]
+            self.labels = reader[keys[1]]
                     
     def __getitem__(self, index):
         x = self.images[index]

@@ -44,7 +44,7 @@ class InspectTrain():
                     
         return dfs, cols
     
-    def show(self, param, subparam=None, xlabel='epoch'):
+    def show(self, param, subparam=None, xlabel='epoch', show_stats=False):
         
         if subparam is not None:
             if not isinstance(subparam, list):
@@ -73,18 +73,29 @@ class InspectTrain():
         
         fig, ax = plt.subplots(1)
             
+        q = 0
+        cs = list(matplotlib.colors.TABLEAU_COLORS.values())
         for key in plot_dict.keys():
             
+            if show_stats and (key != 'save'):
+                min_val = np.min(plot_dict[key])
+                max_val = np.max(plot_dict[key])
+                std_val = np.std(plot_dict[key])
+                avg_val = np.mean(plot_dict[key])
+                med_val = np.median(plot_dict[key])
+                print(key, ':', '{:.5f} | '.format(med_val),
+                      '{:.5f} +/- {:.5f}'.format(avg_val, std_val),
+                      '({:.5f}-{:.5f})'.format(min_val, max_val))
+            
             if key == 'save' or param =='save':
-                y = np.random.rand(1)*plot_dict[key]
-                x = np.array(list(range(len(y))))
-                mask = y > 0
-                ax.scatter(x[mask], y[mask], label=key)
+                x = np.where(plot_dict[key] > 0)
+                ax.vlines(x, 0.4, 0.6, label=key, alpha=0.9, colors=cs[q])
             else:
-                ax.plot(plot_dict[key], label=key)
+                ax.plot(plot_dict[key], label=key, alpha=0.6, c=cs[q])
+            q += 1
             
         ax.set_xlabel(xlabel)
-        ax.set_title(param)
+        ax.set_title((self.source + ': ' + param))
         ax.legend()
             
         return plot_dict
@@ -102,10 +113,10 @@ class InspectTrain():
 
 # %%
 
-data_identifier_source = 'abide_caltech'
+data_identifier_source = 'nci'
 
 it = InspectTrain(data_identifier_source)
 # %%
 
-it.show('dice_val')
+d = it.show('dice_val', show_stats=True)
 # %%

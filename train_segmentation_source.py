@@ -97,6 +97,8 @@ def train_segmentation_network(exp_config, model, trainable_parameters, loader_t
             save_flag = 0 
             
         epoch_data.append([running_loss_train, running_loss_val, running_dice_train, running_dice_val, save_flag]) 
+        
+        external_exit(exp_config)
 
     training_data = {   'epoch_data': pd.DataFrame(epoch_data, columns =['loss_tr', 'loss_val', 'dice_tr', 'dice_val', 'save']),
                         'total_time': timer() - start_time,
@@ -108,7 +110,9 @@ def train_segmentation_network(exp_config, model, trainable_parameters, loader_t
 
 def main_train(exp_config):
     
-    print('Train ID \t:', exp_config.train_id, '\nDataset \t:', exp_config.data_identifier_source)
+    print('Train ID \t:', exp_config.train_id, 
+          '\nDataset \t:', exp_config.data_identifier_source,
+          '\nEpochs \t:', exp_config.number_of_epoch)
     
     # =====================
     # Set determinism of the algorithm

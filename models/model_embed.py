@@ -45,6 +45,11 @@ def patcher(x, size, stride=None, return_us=False):
     
 def depatcher(patches, unfold_shape):
     
+    # for last iteration, last batch might be different
+    if np.prod(unfold_shape) != np.prod(patches.shape):
+        unfold_shape = list(unfold_shape) #torchSize to List
+        unfold_shape[0] = np.prod(patches.shape) // np.prod(unfold_shape[1:])
+    
     patches_orig = patches.view(unfold_shape)
     output_c = unfold_shape[1] * unfold_shape[4]
     output_h = unfold_shape[2] * unfold_shape[5]
@@ -86,7 +91,7 @@ def check_patcher(shape, size):
 #%% Embedder Class
 
 class Embedder(nn.Module):
-    def __init__(self, shape, size, stride=None, pe_fac=1.0):
+    def __init__(self, shape, size, stride=None, pe_fac=1.0, slp=False):
         super(Embedder, self).__init__()
         check_patcher(shape, size)
         self.shape = shape # input shape
@@ -101,8 +106,10 @@ class Embedder(nn.Module):
         self.unfold_shape = us
         self.padded_shape = x_pad.shape # not used, only info
         n_dims = np.prod(p.shape[2:])
-        self.slp = nn.Linear(n_dims, n_dims, bias=True)
-        
+        if slp:
+            self.outF = nn.Linear(n_dims, n_dims, bias=True)
+        else:
+            self.outF = nn.Identity()
         
     def forward(self, x):
         pe = self.pe_fac * self.pos_enc(0*x)
@@ -112,6 +119,6 @@ class Embedder(nn.Module):
         # p.shape (b, n, c, h, w)
         q = p.view(tuple(p.shape[:2]) + (-1,))
         # q.shape (b, n, c*h*w)
-        y = self.slp(q)
+        y = self.outF(q)
         
         return y

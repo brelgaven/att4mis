@@ -39,16 +39,26 @@ class BottleNeck(nn.Module):
         elif hasattr(cfg, 'transformer'):
             self.embedder = Embedder(**cfg.embedder)
             self.transformer = nn.TransformerEncoder(**transConfig(cfg))
-        else:
+        elif not self.noFlag:
             self.idFlag = True
+            
+        self.informater()
         
     def forward(self, x):
-        if self.noFlag == True:
+        if self.noFlag:
             y = 0.0*x
-        elif self.idFlag == True:
+        elif self.idFlag:
             y = x
         else:
             z = self.embedder(x)
             t = self.transformer(z)
             y = depatcher(t, self.embedder.unfold_shape)
         return y
+    
+    def informater(self):
+        
+        if self.noFlag == True:
+            print('No Bottleneck Mode')
+        
+        if self.idFlag == True:
+            print('ID Mode')
