@@ -1,6 +1,9 @@
 *.out
 *.pth
 *.hdf5
+*.png
+*.jpeg
+*.jpg
 results/
 
 # Byte-compiled / optimized / DLL files
