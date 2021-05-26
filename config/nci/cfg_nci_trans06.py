@@ -17,7 +17,7 @@ num_classes = 3
 path_to_save_trained_model = './pre_trained'
 
 image_size = (256, 256, 20)  #XYZ
-patch_size = (1024, 1, 1)  #ZXY
+patch_size = (512, 1, 1)  #ZXY
 
 embedder = {
     'shape':

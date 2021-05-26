@@ -13,13 +13,15 @@ loss_mult = [0.5, 0.5]
 n0 = 16
 pbm = 0.0
 batch_size = 8
-num_classes = 2
+num_classes = 4
 path_to_save_trained_model = './pre_trained'
 
 image_size = (256, 256, 20)
 patch_size = (32, 8 ,8)
 
 noBtNk = True
+
+test_batch_size = 1
 
 test = {
     'data_identifier_source': data_identifier_source,

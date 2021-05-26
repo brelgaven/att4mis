@@ -13,7 +13,7 @@ loss_mult = [0.5, 0.5]  # CE, Dice
 n0 = 16
 pbm = 0.0
 batch_size = 8
-num_classes = 2
+num_classes = 4
 path_to_save_trained_model = './pre_trained'
 
 image_size = (256, 256, 20)  #XYZ
