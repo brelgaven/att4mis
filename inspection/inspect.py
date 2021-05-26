@@ -4,9 +4,16 @@ import pandas as pd
 import matplotlib
 from matplotlib import pyplot as plt
 import os
+from glob import glob
 import numpy as np
 
 # %%
+N_COLORS = 30
+viridis = matplotlib.cm.get_cmap('viridis', N_COLORS)
+cls = np.array(viridis.colors[:,:3]*255).astype(int)
+cs = ["#{:02x}{:02x}{:02x}".format(r,g,b) for r,g,b in cls]
+
+#%%
 
 class InspectTrain():
     def __init__(self, data_identifier_source, results_dir="../results/", extension=".csv"):
@@ -22,7 +29,7 @@ class InspectTrain():
         dfs = dict()
         cols = list()
         
-        for root, dirs, files in os.walk(self.train_dir):
+        for root, _, files in os.walk(self.train_dir):
             for f in files:
                 if f.endswith(self.extension):
                     path2csv = os.path.join(root, f)
@@ -74,7 +81,7 @@ class InspectTrain():
         fig, ax = plt.subplots(1)
             
         q = 0
-        cs = list(matplotlib.colors.TABLEAU_COLORS.values())
+        #cs = list(matplotlib.colors.TABLEAU_COLORS.values())
         for key in plot_dict.keys():
             
             if show_stats and (key != 'save'):
@@ -110,13 +117,81 @@ class InspectTrain():
             return -1
             
         return self.data[key]
+    
+#%% 
 
-# %%
+class InspectTest():
+    
+    def __init__(self, data_identifier_source, results_dir="../results/", extension=".txt"):
+        self.data_source = data_identifier_source
+        self.test_dir = os.path.join(results_dir, data_identifier_source + '/test/')
+        self.extension = extension
+        self.scores = self.read_scores()
+        self.summary = self.summarize()
+        
+    def read_scores(self):
+        
+        scores = dict()
+        paths = glob(self.test_dir + '/*/*'+ self.extension)
+        paths = sorted(paths, key=str.lower)
+        
+        for path in paths:
+            run_name = path.split('/')[-2]
+            df = pd.read_csv(path, sep="\t", header=None)
+            scores_array = np.array(df[1])
+            if list(df[0])[-1].lower() == 'average':
+                scores_array = scores_array[:-1]
+            
+            scores[str(run_name)] = scores_array
+        
+        scores = pd.DataFrame.from_dict(scores)
+        
+        return scores
 
-data_identifier_source = 'nci'
+    def summarize(self):
+        
+        summary = self.scores.describe().transpose()
 
-it = InspectTrain(data_identifier_source)
-# %%
+        return summary
+    
+    def show(self, inc=None):
+        
+        n_runs = len(self.summary)
+        x_pos = np.array(list(range(n_runs)))
+        
+        runs = self.summary.index.values
+        means = self.summary['mean']
+        stds = self.summary['std']
+        
+        if inc is not None:
+            
+            filt = [inc in run for run in runs]
+            runs = [i for (i, v) in zip(runs, filt) if v]
+            means = [i for (i, v) in zip(means, filt) if v]
+            stds = [i for (i, v) in zip(stds, filt) if v]
+        
+        fig, ax = plt.subplots()
+        ax.bar(x_pos, means, yerr=stds, align='center', alpha=0.7, ecolor='black', capsize=5)
+        ax.set_ylabel('Dice Scores')
+        ax.set_xticks(x_pos)
+        ax.set_xticklabels(runs, rotation=70, ha='right')
+        ax.set_title('Dice Scores for ' + self.data_source)
+        ax.yaxis.grid(True)
 
-d = it.show('dice_val', show_stats=True)
+        # Save the figure and show
+        plt.tight_layout()
+        plt.show()
+        
+        
+#%% 
+
+nci_test = InspectTest('nci')
+nci_test.show()
+
+#%% 
+
+ac_test = InspectTest('abide_caltech')
+ac_test.show()
+
+
 # %%

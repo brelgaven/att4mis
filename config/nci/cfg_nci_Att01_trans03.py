@@ -1,6 +1,6 @@
 import numpy as np
 
-train_id = 'trans03'
+train_id = 'Att01_trans03'
 data_identifier_source = 'nci'
 
 number_of_epoch = 2000
@@ -19,7 +19,7 @@ path_to_save_trained_model = './pre_trained'
 image_size = (256, 256, 20)  #XYZ
 patch_size = (128, 4, 4)  #ZXY
 
-use_attention = False
+use_attention = True
 
 embedder = {
     'shape':

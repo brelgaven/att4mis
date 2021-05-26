@@ -24,6 +24,9 @@ def load_datasets(dataset_name, batch_size, tf=toTensor):
         
     if dataset_name == 'nci':
         train_loader, test_loader, val_loader = getNCI(batch_size = batch_size, TF = tf)
+    
+    if dataset_name == 'acdc':
+        train_loader, test_loader, val_loader = getACDC(batch_size = batch_size, TF = tf)
         
     if dataset_name == 'pirad_erc':
         train_loader, test_loader, val_loader = getERC(batch_size = batch_size, TF = tf)
@@ -113,6 +116,24 @@ def getNCI(batch_size, TF):
     
     return train_loader, test_loader, val_loader
 
+def getACDC(batch_size, TF):
+    path_all = 'data/acdc/data_2D_size_256_256_res_1.33_1.33_cv_fold_1.hdf5'
+    train_keys = ['images_train', 'labels_train']
+    test_keys = ['images_test', 'labels_test']
+    val_keys = ['images_validation', 'labels_validation']
+    
+    ds_train = HDF5Dataset.HDF5Dataset(path_all, TF, keys=train_keys)
+    train_loader = torch.utils.data.DataLoader(ds_train, batch_size = batch_size, shuffle = True)
+    
+    ds_test = HDF5Dataset.HDF5Dataset(path_all, TF, keys=test_keys)
+    test_loader = torch.utils.data.DataLoader(ds_test, batch_size = batch_size, shuffle = False)
+    
+    ds_validation = HDF5Dataset.HDF5Dataset(path_all, TF, keys=val_keys)
+    val_loader = torch.utils.data.DataLoader(ds_validation, batch_size = batch_size, shuffle = False)
+    
+    return train_loader, test_loader, val_loader
+
+
 def getERC(batch_size, TF):
     path_train = 'data/pirad_erc/data_2d_from_40_to_68_size_256_256_res_0.625_0.625_ek.hdf5'
     path_validation = 'data/pirad_erc/------------'
@@ -128,3 +149,4 @@ def getERC(batch_size, TF):
     val_loader = torch.utils.data.DataLoader(ds_validation, batch_size = batch_size, shuffle = False)
     
     return train_loader, test_loader, val_loader
+

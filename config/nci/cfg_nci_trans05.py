@@ -10,14 +10,14 @@ seed = 42
 
 loss_mult = [0.5, 0.5]
 
-n0 = 64
+n0 = 32
 pbm = 0.0
 batch_size = 8
 num_classes = 3
 path_to_save_trained_model = './pre_trained'
 
-image_size = (256, 256, 20) #XYZ
-patch_size = (512, 2, 2) #ZXY
+image_size = (256, 256, 20)  #XYZ
+patch_size = (256, 2, 2)  #ZXY
 
 embedder = {
     'shape':

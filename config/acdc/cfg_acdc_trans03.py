@@ -1,9 +1,9 @@
 import numpy as np
 
 train_id = 'trans03'
-data_identifier_source = 'nci'
+data_identifier_source = 'acdc'
 
-number_of_epoch = 2000
+number_of_epoch = 1000
 
 deterministic = True
 seed = 42
@@ -13,7 +13,7 @@ loss_mult = [0.5, 0.5]  # CE, Dice
 n0 = 16
 pbm = 0.0
 batch_size = 8
-num_classes = 3
+num_classes = 2
 path_to_save_trained_model = './pre_trained'
 
 image_size = (256, 256, 20)  #XYZ
@@ -50,5 +50,7 @@ test = {
     'save_images': False,
     'batch_size': test_batch_size,
     'embedder': test_embedder,
-    'no_slices': [20, 20, 20, 20, 19, 20, 20, 15, 20, 20],
+    'no_slices': [ 8,  8,  9,  9,  8,  8, 10, 10, 14, 14,  8,  8,  9,  9, 10, 10,  7,
+                   7, 13, 13,  6,  6, 14, 14,  6,  6, 10, 10, 10, 10,  9,  9,  8,  8,
+                  15, 15,  9,  9, 10, 10],
 }

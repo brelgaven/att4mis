@@ -1,6 +1,6 @@
 import numpy as np
 
-train_id = 'trans03'
+train_id = 'CSEtrans04'
 data_identifier_source = 'nci'
 
 number_of_epoch = 2000
@@ -8,7 +8,7 @@ number_of_epoch = 2000
 deterministic = True
 seed = 42
 
-loss_mult = [0.5, 0.5]  # CE, Dice
+loss_mult = [1, 0]  # CE, Dice
 
 n0 = 16
 pbm = 0.0
@@ -17,9 +17,7 @@ num_classes = 3
 path_to_save_trained_model = './pre_trained'
 
 image_size = (256, 256, 20)  #XYZ
-patch_size = (128, 4, 4)  #ZXY
-
-use_attention = False
+patch_size = (64, 8, 8)  #ZXY
 
 embedder = {
     'shape':
