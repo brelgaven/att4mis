@@ -1,23 +1,25 @@
 import numpy as np
 
-train_id = 'trans06'
-data_identifier_source = 'nci'
+train_id = 'trans04'
+data_identifier_source = 'abide_caltech'
 
-number_of_epoch = 2000
+number_of_epoch = 500
 
 deterministic = True
-seed = 57
+seed = 42
 
 loss_mult = [0.5, 0.5]
 
-n0 = 64
+n0 = 16
 pbm = 0.0
 batch_size = 8
-num_classes = 3
+num_classes = 15
 path_to_save_trained_model = './pre_trained'
 
-image_size = (256, 256, 20)  #XYZ
-patch_size = (512, 1, 1)  #ZXY
+image_size = (256, 256, 256)  #XYZ
+patch_size = (64, 8, 8)  #ZXY
+
+use_attention = False
 
 embedder = {
     'shape':
@@ -32,21 +34,9 @@ transformer = {
     'dim_feedforward': 1024,
 }
 
-test_batch_size = 1
-
-test_embedder = {
-    'shape':
-    tuple([test_batch_size, n0 * 8, image_size[0] // 8, image_size[1] // 8]),
-    'size':
-    patch_size,
-}
-
 test = {
     'data_identifier_source': data_identifier_source,
     'data_identifier_target': data_identifier_source,
     'experiment_name': train_id,
     'save_images': False,
-    'batch_size': test_batch_size,
-    'embedder': test_embedder,
-    'no_slices': [20, 20, 20, 20, 19, 20, 20, 15, 20, 20],
 }

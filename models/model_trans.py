@@ -2,8 +2,10 @@
 
 try:
     from models.model_embed import *
+    from models.model_bnViT import BnViT
 except Exception:
     from model_embed import *
+    from model_bnViT import BnViT
 
 import torch
 import torch.nn as nn
@@ -39,6 +41,11 @@ class BottleNeck(nn.Module):
         elif hasattr(cfg, 'transformer'):
             self.embedder = Embedder(**cfg.embedder)
             self.transformer = nn.TransformerEncoder(**transConfig(cfg))
+        elif hasattr(cfg, 'bnViT'):
+            self.embedder = Embedder(**cfg.embedder)
+            self.transformer = BnViT(**cfg.bnViT)
+            model_name = cfg.bnViT['model']
+            print(f'ViT Transformer: {model_name}')
         elif not self.noFlag:
             self.idFlag = True
             

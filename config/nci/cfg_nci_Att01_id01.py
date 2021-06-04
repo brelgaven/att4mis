@@ -6,7 +6,7 @@ data_identifier_source = 'nci'
 number_of_epoch = 2000
 
 deterministic = True
-seed = 42
+seed = 57
 
 loss_mult = [0.5, 0.5]  # CE, Dice
 

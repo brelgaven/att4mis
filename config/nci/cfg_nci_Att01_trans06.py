@@ -6,13 +6,13 @@ data_identifier_source = 'nci'
 number_of_epoch = 2000
 
 deterministic = True
-seed = 42
+seed = 57
 
 loss_mult = [0.5, 0.5]
 
 n0 = 64
 pbm = 0.0
-batch_size = 8
+batch_size = 4
 num_classes = 3
 path_to_save_trained_model = './pre_trained'
 

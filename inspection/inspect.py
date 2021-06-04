@@ -154,21 +154,32 @@ class InspectTest():
 
         return summary
     
-    def show(self, inc=None):
+    def show(self, incs=None):
         
-        n_runs = len(self.summary)
+        df = pd.DataFrame.copy(self.summary)
+        
+        if incs is not None:
+            if not isinstance(incs, list):
+                incs = [incs]
+            
+            filt = np.ones(len(df), dtype=bool)
+            
+            for inc in incs:
+                if inc[0] == '~':
+                    filt0 = [inc[1:] not in value for value in df.index.values]
+                else:
+                    filt0 = [inc in value for value in df.index.values]
+            
+                filt = np.logical_and(filt0, filt)
+            
+            df = df[filt]
+        
+        n_runs = len(df)
         x_pos = np.array(list(range(n_runs)))
         
-        runs = self.summary.index.values
-        means = self.summary['mean']
-        stds = self.summary['std']
-        
-        if inc is not None:
-            
-            filt = [inc in run for run in runs]
-            runs = [i for (i, v) in zip(runs, filt) if v]
-            means = [i for (i, v) in zip(means, filt) if v]
-            stds = [i for (i, v) in zip(stds, filt) if v]
+        runs = df.index.values
+        means = df['mean']
+        stds = df['std']
         
         fig, ax = plt.subplots()
         ax.bar(x_pos, means, yerr=stds, align='center', alpha=0.7, ecolor='black', capsize=5)
@@ -182,16 +193,21 @@ class InspectTest():
         plt.tight_layout()
         plt.show()
         
+        return df
+        
         
 #%% 
 
 nci_test = InspectTest('nci')
 nci_test.show()
-
 #%% 
 
 ac_test = InspectTest('abide_caltech')
 ac_test.show()
 
 
+# %%
+
+ad_test = InspectTest('acdc')
+ad_test.show()
 # %%
