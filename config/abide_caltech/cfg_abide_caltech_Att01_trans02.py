@@ -23,7 +23,7 @@ patch_size = (32, 8, 8)
 
 embedder = {
     'shape':
-    tuple([batch_size, n0 * 8, image_size[1] // 8, image_size[2] // 8]),
+    tuple([batch_size, n0 * 8, image_size[0] // 8, image_size[1] // 8]),
     'size': patch_size,
 }
 
@@ -38,5 +38,5 @@ test = {
     'data_identifier_source': data_identifier_source,
     'data_identifier_target': data_identifier_source,
     'experiment_name': train_id,
-    'save_images': True,
+    'save_images': False,
 }

@@ -2,6 +2,7 @@
 
 import pandas as pd
 import matplotlib
+#import pickle5 as pickle
 from matplotlib import pyplot as plt
 import os
 from glob import glob
@@ -12,6 +13,19 @@ N_COLORS = 30
 viridis = matplotlib.cm.get_cmap('viridis', N_COLORS)
 cls = np.array(viridis.colors[:,:3]*255).astype(int)
 cs = ["#{:02x}{:02x}{:02x}".format(r,g,b) for r,g,b in cls]
+
+def find_subs(strs):
+    
+    ms = list()
+    
+    for s in strs:
+        
+        if s[-2] == '_' and s[-1].isdigit():
+            ms.append(s[:-2])
+        else:
+            ms.append(s)
+            
+    return ms
 
 #%%
 
@@ -144,13 +158,40 @@ class InspectTest():
             
             scores[str(run_name)] = scores_array
         
-        scores = pd.DataFrame.from_dict(scores)
+        scores = pd.DataFrame.from_dict(scores).T
         
         return scores
 
     def summarize(self):
         
-        summary = self.scores.describe().transpose()
+        dictData = dict()
+        
+        for s in self.scores.index.values:
+            
+            data = list(self.scores.loc[s,:])
+            
+            if s[-2] == '_' and s[-1].isdigit():
+                ms = s[:-2]
+            else:
+                ms = s
+                
+            if ms in dictData.keys():
+                for d in data:
+                    dictData[ms].append(d)
+            else:
+                dictData[ms] = data
+        
+        try:
+            summary = pd.DataFrame.from_dict(dictData).describe().T
+        except Exception:
+            sumDict = dict()
+            for key in dictData.keys():
+                rd = dictData[key]
+                sumDict[key] = [np.mean(rd), np.std(rd), 
+                                np.max(rd), np.min(rd), len(rd)]
+                
+            summary = pd.DataFrame.from_dict(sumDict).T
+            summary.columns = ['mean', 'std', 'max', 'min', 'count']
 
         return summary
     
@@ -195,19 +236,86 @@ class InspectTest():
         
         return df
         
-        
 #%% 
+
+class TrainDuration():
+    
+    def __init__(self, data_identifier_source, results_dir="../results/"):
+        self.data_source = data_identifier_source
+        self.train_dir = os.path.join(results_dir, data_identifier_source + '/train/')
+        self.data = self.read_data()
+        self.summary = self.summarize()
+
+    def read_data(self):
+        
+        data = dict()
+        paths = glob(self.train_dir + '/*/epoch_data.csv')
+        paths = sorted(paths, key=str.lower)
+        
+        for path in paths:
+            run_name = path.split('/')[-2]
+            path_cfg = '/'.join(path.split('/')[:-1]) + '/cfg.py'
+
+            s = run_name
+            
+            if s[-2] == '_' and s[-1].isdigit():
+                main_run = s[:-2]
+            else:
+                main_run = s
+            
+            with open(path_cfg, 'rb') as f:
+                lines = f.read().splitlines()
+                lines = [line.decode("utf-8") for line in lines]
+                duration = float(lines[3].split(' ')[2])
+
+            with open(path, 'r') as f:
+                lines = f.read().splitlines()
+                last_line = lines[-1]
+            last_epoch = int(last_line.split(',')[0])
+            
+            n_epochs = last_epoch+1
+            
+            data[str(run_name)] = [main_run, duration/n_epochs, duration, n_epochs]
+        
+        data = pd.DataFrame.from_dict(data)
+        data = data.T
+        
+        data.columns = ['run_base', 'epoch_duration', 'duration', 'n_epochs']
+        
+        data['epoch_duration'] = data['epoch_duration'].astype(float)
+        
+        return data
+    
+    def summarize(self):
+        
+        summary = self.data.groupby('run_base')["epoch_duration"].agg([np.mean, np.std, np.min, np.max])
+        return summary
+
+
+#%% 
+
+nci_dur = TrainDuration('nci')
+nci_dur.summary
+#%%
+
+abide_dur = TrainDuration('abide_caltech')
+abide_dur.summary
+#%%
+
+acdc_dur = TrainDuration('acdc')
+acdc_dur.summary
+
+#%%
 
 nci_test = InspectTest('nci')
-nci_test.show()
+nci_test.summary
 #%% 
 
-ac_test = InspectTest('abide_caltech')
-ac_test.show()
-
+abide_test = InspectTest('abide_caltech')
+abide_test.summary
 
 # %%
 
-ad_test = InspectTest('acdc')
-ad_test.show()
+acdc_test = InspectTest('acdc')
+acdc_test.summary
 # %%

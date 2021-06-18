@@ -31,8 +31,10 @@ def train_segmentation_network(exp_config, model, trainable_parameters, loader_t
     if dice_mult != 0:
         dice_loss = DiceLoss(exp_config.num_classes)
     
+    max_no_save_epoch = exp_config.number_of_epoch//5
     
     best_loss_val = 0
+    no_save_epoch = 0
     
     pth_save_path = file_new(('%s/%s_model_segmentation_%s.pth')%
                              (path_to_save_model, exp_config.data_identifier_source, exp_config.train_id))
@@ -90,13 +92,19 @@ def train_segmentation_network(exp_config, model, trainable_parameters, loader_t
             torch.save(model.state_dict(), pth_save_path) 
             best_str = 'epoch:%d - loss_tr: %.10f loss_val: %.10f - dice_tr: %.10f dice_val: %.10f' % (epoch, running_loss_train, running_loss_val, running_dice_train, running_dice_val) 
             print(best_str, '- Last Saved')
-            save_flag = 1 
+            save_flag = 1
+            no_save_epoch = 0
         else:
             print('epoch:%d - loss_tr: %.10f loss_val: %.10f - dice_tr: %.10f dice_val: %.10f' %
                   (epoch, running_loss_train, running_loss_val, running_dice_train, running_dice_val))
             save_flag = 0 
             
         epoch_data.append([running_loss_train, running_loss_val, running_dice_train, running_dice_val, save_flag]) 
+        no_save_epoch += 1
+        
+        if no_save_epoch > max_no_save_epoch:
+            print('Finished by maximum number of epochs without save')
+            break
         
         external_exit(exp_config)
 

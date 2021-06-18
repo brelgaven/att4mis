@@ -3,7 +3,7 @@ import numpy as np
 train_id = 'trans04'
 data_identifier_source = 'abide_caltech'
 
-number_of_epoch = 500
+number_of_epoch = 1000
 
 deterministic = True
 seed = 42

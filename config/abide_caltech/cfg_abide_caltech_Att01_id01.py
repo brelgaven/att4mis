@@ -25,5 +25,5 @@ test = {
     'data_identifier_source': data_identifier_source,
     'data_identifier_target': data_identifier_source,
     'experiment_name': train_id,
-    'save_images': True,
+    'save_images': False,
 }

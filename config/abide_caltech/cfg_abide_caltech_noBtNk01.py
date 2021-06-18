@@ -1,9 +1,9 @@
 import numpy as np
 
-train_id = 'transFAtt_try'
+train_id = 'noBtNk01'
 data_identifier_source = 'abide_caltech'
 
-number_of_epoch = 10
+number_of_epoch = 1000
 
 deterministic = True
 seed = 42
@@ -17,26 +17,14 @@ num_classes = 15
 path_to_save_trained_model = './pre_trained'
 
 use_attention = False
+noBtNk = True
 
 image_size = (256, 256, 256)
-patch_size = (128, 4, 4)
-
-embedder = {
-    'shape':
-    tuple([batch_size, n0 * 8, image_size[1] // 8, image_size[2] // 8]),
-    'size': patch_size,
-}
-
-transformer = {
-    'num_layers': 12,
-    'd_model': np.prod(patch_size),
-    'nhead': 8,
-    'dim_feedforward': 1024,
-}
+patch_size = (32, 8, 8)
 
 test = {
     'data_identifier_source': data_identifier_source,
     'data_identifier_target': data_identifier_source,
     'experiment_name': train_id,
-    'save_images': True,
+    'save_images': False,
 }

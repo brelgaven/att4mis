@@ -6,7 +6,7 @@ data_identifier_source = 'acdc'
 number_of_epoch = 1000
 
 deterministic = True
-seed = 42
+seed = 99
 
 loss_mult = [0.5, 0.5]  # CE, Dice
 
