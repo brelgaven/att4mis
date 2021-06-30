@@ -6,6 +6,7 @@ import matplotlib
 from matplotlib import pyplot as plt
 import os
 from glob import glob
+
 import numpy as np
 
 # %%
@@ -291,7 +292,18 @@ class TrainDuration():
         summary = self.data.groupby('run_base')["epoch_duration"].agg([np.mean, np.std, np.min, np.max])
         return summary
 
+#%%
 
+def diceWriter(data, save_name):
+
+    m = data['mean'].apply(lambda x: f"{x:.3f}")
+    s = data['std'].apply(lambda x: f"{x:.3f}"[1:])
+    
+    res = m.to_frame()
+    res['std'] = s
+    
+    res.to_csv(save_name)
+    
 #%% 
 
 nci_dur = TrainDuration('nci')
@@ -308,14 +320,21 @@ acdc_dur.summary
 #%%
 
 nci_test = InspectTest('nci')
+print(len(nci_test.summary))
+diceWriter(nci_test.summary, 'nci_dice.csv')
 nci_test.summary
+
 #%% 
 
 abide_test = InspectTest('abide_caltech')
+print(len(abide_test.summary))
+diceWriter(abide_test.summary, 'abide_caltech_dice.csv')
 abide_test.summary
-
 # %%
 
 acdc_test = InspectTest('acdc')
+print(len(acdc_test.summary))
+diceWriter(acdc_test.summary, 'acdc_dice.csv')
 acdc_test.summary
 # %%
+

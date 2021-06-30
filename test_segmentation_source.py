@@ -47,7 +47,9 @@ def test_segmentation_network(exp_config, model, loader_test):
         if counter == slice_per_volume:
             if exp_config.save_images:
                 save_volume(data_volume, target_volume, pred_volume, counter_volume, exp_config.save_path)
-            dice_for_each_class = met.f1_score(target_volume.flatten(), pred_volume.flatten(), average = None)
+            trgt, pred = np.copy(target_volume.flatten()), np.copy(pred_volume.flatten())
+            ind_wx_bckgrnd = trgt != 0
+            dice_for_each_class = met.f1_score(trgt[ind_wx_bckgrnd], pred[ind_wx_bckgrnd], average = None)
             dice_volume = np.mean(dice_for_each_class)
             dice_total += dice_volume
             
