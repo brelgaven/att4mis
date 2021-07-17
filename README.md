@@ -2,8 +2,10 @@
 ### Semester Project #1 for Electrical Engineering and Information Theory Master
 
 Author: Guney Tombak
+
 gtombak@student.ethz.ch
-Supervisors: 
+
+Supervisors:
 Dr. Ertunc Erdil, 
 Prof. Dr. Ender Konukoglu
 
